@@ -1,0 +1,25 @@
+#Anything that is optional which you are not using, just delete that line. You can also delete any of the '#comments'
+
+modLoader="javafml" #mandatory
+loaderVersion="[35,)" #mandatory
+license="MIT Liscense" #mandatory https://choosealicense.com/
+issueTrackerURL="http://fillmein/" #optional
+
+[[mods]] #mandatory
+modId="sj_rock_mod" #mandatory
+version="0.1" #mandatory
+displayName="The Rock Mod" #mandatory
+updateJSONURL="http://fillmein.me/" #optional
+displayURL="http://fillmein.com/" #optional
+
+#logoFile="fillmein.png" #optional
+
+credits="I'd like to thank the academy - Fill me in" #optional
+authors="SecretJuice" #optional
+description='''
+A mod that adds rocks you can throw!
+
+Use cobblestone on obsidian with your off-hand to get rocks.
+
+Use rocks to throw them like snowballs!
+''' #mandatory
