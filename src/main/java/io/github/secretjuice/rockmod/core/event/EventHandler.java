@@ -42,8 +42,6 @@ public class EventHandler {
                     player.inventory.addItemStackToInventory(new ItemStack(ItemInit.ROCK.get(), 1));
                     player.inventory.decrStackSize(player.inventory.currentItem, 1);
 
-                    event.setCanceled(true);
-
                     System.out.println("Made it Final Stage");
 
                 }
