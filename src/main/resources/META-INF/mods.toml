@@ -19,7 +19,7 @@ authors="SecretJuice" #optional
 description='''
 A mod that adds rocks you can throw!
 
-Use cobblestone on obsidian with your off-hand to get rocks.
+Left-Click obsidian with cobblestone to get rocks.
 
 Use rocks to throw them like snowballs!
 ''' #mandatory
