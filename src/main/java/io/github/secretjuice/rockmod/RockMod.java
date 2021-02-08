@@ -1,6 +1,7 @@
 package io.github.secretjuice.rockmod;
 
 import io.github.secretjuice.rockmod.core.init.ItemInit;
+import io.github.secretjuice.rockmod.network.handler.RockModPacketHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -28,7 +29,7 @@ public class RockMod
 
     private void setup(final FMLCommonSetupEvent event)
     {
-
+        RockModPacketHandler.register();
     }
 
 }
