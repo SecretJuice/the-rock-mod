@@ -1,5 +1,6 @@
 package io.github.secretjuice.rockmod.network.packets;
 
+import io.github.secretjuice.rockmod.core.event.EventHandler;
 import io.github.secretjuice.rockmod.core.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -7,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.BlockParticleData;
@@ -19,6 +21,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -88,22 +91,32 @@ public class RockPacket {
 
             }
 
+            ServerWorld serverWorld = world.getServer().getWorld(player.getEntityWorld().getDimensionKey());
+
+
             for (int i = 0; i < 12; i++){
 
-                world.addParticle(new BlockParticleData(ParticleTypes.BLOCK, Block.getBlockFromItem(msg.rockItemStack.getItem()).getDefaultState()),
+                serverWorld.spawnParticle(new BlockParticleData(ParticleTypes.BLOCK, Block.getBlockFromItem(msg.rockItemStack.getItem()).getDefaultState()),
                         pos.getX() + ((world.rand.nextFloat() - 0.5F) * 0.75F),
                         pos.getY() + ((world.rand.nextFloat() - 0.5F) * 0.75F),
                         pos.getZ() + ((world.rand.nextFloat() - 0.5F) * 0.75F),
-                        0, 0, 0);
+                        1,
+                        0, 0, 0,1);
 
             }
 
-            world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), new SoundEvent(new ResourceLocation("minecraft", "block.ancient_debris.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
-            world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), new SoundEvent(new ResourceLocation("minecraft", "item.axe.strip")), SoundCategory.BLOCKS, 1.0F, 1.0F);
+            //serverWorld.playSound(null, pos.getX(), pos.getY(), pos.getZ(), new SoundEvent(new ResourceLocation("minecraft", "item.axe.strip")), SoundCategory.BLOCKS, 1.0F, 1.0F);
+            //serverWorld.playSound(null, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.ancient_debris.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.lodestone.break")), SoundCategory.BLOCKS, 1.0F, 0F);
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.nether_bricks.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
+
 
             if (!player.isCreative()) {
                 player.inventory.decrStackSize(player.inventory.currentItem, 1);
             }
+
+            EventHandler.setSmashingStone(true);
 
         });
         context.get().setPacketHandled(true);

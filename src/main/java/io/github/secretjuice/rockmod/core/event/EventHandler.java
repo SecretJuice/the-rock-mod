@@ -37,6 +37,10 @@ public class EventHandler {
 
     private static boolean smashingStone = false;
 
+    public static void setSmashingStone(boolean bool){
+        smashingStone = bool;
+    }
+
     @SubscribeEvent
     public static void onStoneSmash(final PlayerInteractEvent.RightClickBlock event) {
 
@@ -67,17 +71,24 @@ public class EventHandler {
                         RockPacket packet = new RockPacket(player.inventory.getCurrentItem(), packetPos, packetFacing);
                         RockModPacketHandler.CHANNEL.sendToServer(packet);
 
-                        Random rand = new Random();
+                        //world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.ancient_debris.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                        //world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), new SoundEvent(new ResourceLocation("minecraft", "item.axe.strip")), SoundCategory.BLOCKS, 1.0F, 1.0F);
 
-                        for (int i = 0; i < 12; i++){
+                        world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.lodestone.break")), SoundCategory.BLOCKS, 1.0F, 0F);
+                        world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.nether_bricks.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
 
-                            world.addParticle(new BlockParticleData(ParticleTypes.BLOCK, Blocks.COBBLESTONE.getDefaultState()),
-                                    pos.getX() + offsetX + ((rand.nextFloat() - 0.5F) * 0.75F),
-                                    pos.getY() + offsetY + ((rand.nextFloat() - 0.5F) * 0.75F),
-                                    pos.getZ() + offsetZ + ((rand.nextFloat() - 0.5F) * 0.75F),
-                                    0, 0, 0);
 
-                        }
+                        //Random rand = new Random();
+
+//                        for (int i = 0; i < 12; i++){
+//
+//                            world.addParticle(new BlockParticleData(ParticleTypes.BLOCK, Blocks.COBBLESTONE.getDefaultState()),
+//                                    pos.getX() + offsetX + ((rand.nextFloat() - 0.5F) * 0.75F),
+//                                    pos.getY() + offsetY + ((rand.nextFloat() - 0.5F) * 0.75F),
+//                                    pos.getZ() + offsetZ + ((rand.nextFloat() - 0.5F) * 0.75F),
+//                                    0, 0, 0);
+//
+//                        }
                         smashingStone = true;
                         event.setCanceled(true);
 

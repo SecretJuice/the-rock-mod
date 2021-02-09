@@ -1,5 +1,6 @@
 package io.github.secretjuice.rockmod.common.entites;
 
+import io.github.secretjuice.rockmod.client.render.particle.ProjectileImpactParticleRenderer;
 import io.github.secretjuice.rockmod.core.init.EntityTypeInit;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.particle.Particle;
@@ -15,6 +16,7 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -53,6 +55,16 @@ public class RockEntity extends SnowballEntity {
         //int i = entity instanceof BlazeEntity ? 3 : 0;
         int i = 2;
         entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)i);
+    }
+
+    protected void onImpact(RayTraceResult result) {
+        super.onImpact(result);
+        if (!this.world.isRemote) {
+            this.world.setEntityState(this, (byte)3);
+            ProjectileImpactParticleRenderer.renderImpactParticles(this);
+            this.remove();
+        }
+
     }
 
 }

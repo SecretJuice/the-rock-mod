@@ -9,7 +9,7 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public class RockModPacketHandler {
 
-    private static final String PROTOCOL_VERSION = "1.16.4-0.0.3.0";
+    private static final String PROTOCOL_VERSION = "1.16.4-0.0.4.0";
     public static SimpleChannel CHANNEL;
 
     public static void register() {
