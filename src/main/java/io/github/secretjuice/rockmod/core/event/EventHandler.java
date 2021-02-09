@@ -72,6 +72,9 @@ public class EventHandler {
                     else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.MAGMA_BLOCK.asItem())){
                         onStoneSmash(event);
                     }
+                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.END_STONE.asItem())){
+                        onStoneSmash(event);
+                    }
                 }
             }
 

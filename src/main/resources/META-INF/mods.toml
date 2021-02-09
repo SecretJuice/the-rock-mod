@@ -7,7 +7,7 @@ issueTrackerURL="http://fillmein/" #optional
 
 [[mods]] #mandatory
 modId="sj_rock_mod" #mandatory
-version="1.16.4-0.0.4.0" #mandatory
+version="1.16.4-0.0.5.0" #mandatory
 displayName="The Rock Mod" #mandatory
 updateJSONURL="http://fillmein.me/" #optional
 displayURL="http://fillmein.com/" #optional

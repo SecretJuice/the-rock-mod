@@ -1,6 +1,7 @@
 package io.github.secretjuice.rockmod.core.init;
 
 import io.github.secretjuice.rockmod.RockMod;
+import io.github.secretjuice.rockmod.common.items.EndRockItem;
 import io.github.secretjuice.rockmod.common.items.MagmaRockItem;
 import io.github.secretjuice.rockmod.common.items.RockItem;
 import net.minecraft.item.Item;
@@ -18,5 +19,7 @@ public class ItemInit {
             () -> new RockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
     public static final RegistryObject<MagmaRockItem> MAGMA_ROCK = ITEMS.register("magmarock",
             () -> new MagmaRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
+    public static final RegistryObject<EndRockItem> END_ROCK = ITEMS.register("endrock",
+            () -> new EndRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
 
 }

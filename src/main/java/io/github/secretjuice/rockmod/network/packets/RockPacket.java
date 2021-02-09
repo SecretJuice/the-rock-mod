@@ -80,6 +80,10 @@ public class RockPacket {
                 ItemStack stack = new ItemStack(ItemInit.MAGMA_ROCK.get(), 1);
                 spawnItemEntity(world, stack, pos, facing);
             }
+            else if (msg.rockItemStack.getItem().equals(Blocks.END_STONE.asItem())){
+                ItemStack stack = new ItemStack(ItemInit.END_ROCK.get(), 1);
+                spawnItemEntity(world, stack, pos, facing);
+            }
 
             ServerWorld serverWorld = world.getServer().getWorld(player.getEntityWorld().getDimensionKey());
 
