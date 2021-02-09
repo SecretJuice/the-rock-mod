@@ -28,11 +28,13 @@ public class RockItem extends SnowballItem {
         super(properties);
     }
 
+    protected String tooltipTranslationKey = "tooltip.sj_rock_mod.rock.tooltip";
+
     @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add(new TranslationTextComponent("tooltip.sj_rock_mod.rock.tooltip"));
+        tooltip.add(new TranslationTextComponent(this.tooltipTranslationKey));
     }
 
     @Override

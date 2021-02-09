@@ -23,7 +23,15 @@ public class ProjectileImpactParticleRenderer {
         double randFlex = 0.1D;
 
         for(int i = 0; i < 8; ++i) {
-            serverWorld.spawnParticle(iparticledata,  rockEntity.getPosX() + ((rand.nextGaussian() - 0.5) * randFlex), rockEntity.getPosY() + ((rand.nextGaussian() - 0.5) * randFlex), rockEntity.getPosZ() + ((rand.nextGaussian() - 0.5) * randFlex), 1, rand.nextDouble() * 0.2, rand.nextDouble() * 0.2, rand.nextDouble() * 0.2, 1);
+            serverWorld.spawnParticle(iparticledata,
+                    rockEntity.getPosX() + ((rand.nextGaussian() - 0.5) * randFlex),
+                    rockEntity.getPosY() + ((rand.nextGaussian() - 0.5) * randFlex),
+                    rockEntity.getPosZ() + ((rand.nextGaussian() - 0.5) * randFlex),
+                    1,
+                    rand.nextDouble() * 0.2,
+                    rand.nextDouble() * 0.2,
+                    rand.nextDouble() * 0.2,
+                    1);
         }
 
     }
