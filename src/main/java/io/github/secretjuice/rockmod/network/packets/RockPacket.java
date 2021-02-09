@@ -73,11 +73,12 @@ public class RockPacket {
             Vector3i facing = msg.interactFacing;
 
             if (msg.rockItemStack.getItem().equals(Blocks.COBBLESTONE.asItem())){
-
                 ItemStack stack = new ItemStack(ItemInit.ROCK.get(), 1);
-
                 spawnItemEntity(world, stack, pos, facing);
-
+            }
+            else if (msg.rockItemStack.getItem().equals(Blocks.MAGMA_BLOCK.asItem())){
+                ItemStack stack = new ItemStack(ItemInit.MAGMA_ROCK.get(), 1);
+                spawnItemEntity(world, stack, pos, facing);
             }
 
             ServerWorld serverWorld = world.getServer().getWorld(player.getEntityWorld().getDimensionKey());

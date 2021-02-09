@@ -69,6 +69,9 @@ public class EventHandler {
                     if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.COBBLESTONE.asItem())){
                         onStoneSmash(event);
                     }
+                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.MAGMA_BLOCK.asItem())){
+                        onStoneSmash(event);
+                    }
                 }
             }
 

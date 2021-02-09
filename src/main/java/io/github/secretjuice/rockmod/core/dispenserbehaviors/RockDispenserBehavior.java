@@ -1,5 +1,6 @@
 package io.github.secretjuice.rockmod.core.dispenserbehaviors;
 
+import io.github.secretjuice.rockmod.common.entites.MagmaRockEntity;
 import io.github.secretjuice.rockmod.common.entites.RockEntity;
 import io.github.secretjuice.rockmod.core.init.EntityTypeInit;
 import io.github.secretjuice.rockmod.core.init.ItemInit;
@@ -21,6 +22,14 @@ public class RockDispenserBehavior {
         DispenserBlock.registerDispenseBehavior(ItemInit.ROCK.get(), new ProjectileDispenseBehavior() {
             protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
                 return (ProjectileEntity) Util.make(new RockEntity((EntityType<? extends SnowballEntity>) EntityTypeInit.ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
+        DispenserBlock.registerDispenseBehavior(ItemInit.MAGMA_ROCK.get(), new ProjectileDispenseBehavior() {
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new MagmaRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.MAGMA_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
                     rock.setItem(stackIn);
                 });
             }

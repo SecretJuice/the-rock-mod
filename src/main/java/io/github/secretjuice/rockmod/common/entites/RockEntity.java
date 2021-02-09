@@ -44,7 +44,18 @@ public class RockEntity extends SnowballEntity {
     protected DamageSource entityDamageSource = RockDamageSource.ROCK;
 
     public BlockState getParticleBlockState(){
-        return this.particleBlockState;
+        return particleBlockState;
+    }
+    public void setParticleBlockState(BlockState blockState){
+        particleBlockState = blockState;
+    }
+
+    public DamageSource getEntityDamageSource(){
+        return entityDamageSource;
+    }
+
+    public void setEntityDamageSource(DamageSource damageSource){
+        entityDamageSource = damageSource;
     }
 
     protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
@@ -71,7 +82,7 @@ public class RockEntity extends SnowballEntity {
         super.onImpact(result);
         if (!this.world.isRemote) {
             this.world.setEntityState(this, (byte)3);
-            ProjectileImpactParticleRenderer.renderImpactParticles(this);
+            ProjectileImpactParticleRenderer.renderImpactParticles(this, getParticleBlockState());
             this.remove();
         }
 

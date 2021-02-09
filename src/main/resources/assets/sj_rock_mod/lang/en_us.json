@@ -1,7 +1,12 @@
 {
     "item.sj_rock_mod.rock": "Rock",
+    "item.sj_rock_mod.magmarock": "Magma Rock",
+
     "tooltip.sj_rock_mod.rock.tooltip": "\u00A76Yep, it's a rock.",
+    "tooltip.sj_rock_mod.magmarock.tooltip": "\u00A76It's hot to the touch",
 
     "death.attack.sj_rock_mod.rock": "%s was stoned to death with a Rock",
-    "death.attack.sj_rock_mod.rock.player": "%1$s was stoned to death by %2$s with a Rock"
+    "death.attack.sj_rock_mod.rock.player": "%1$s was stoned to death by %2$s with a Rock",
+    "death.attack.sj_rock_mod.magmarock": "%s was stoned to death with a Magma Rock",
+    "death.attack.sj_rock_mod.magmarock.player": "%1$s was stoned to death by %2$s with a Magma Rock"
 }

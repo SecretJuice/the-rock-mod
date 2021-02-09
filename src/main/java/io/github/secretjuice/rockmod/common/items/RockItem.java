@@ -4,7 +4,9 @@ import io.github.secretjuice.rockmod.common.entites.RockEntity;
 import io.github.secretjuice.rockmod.core.init.EntityTypeInit;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SnowballItem;
@@ -29,6 +31,11 @@ public class RockItem extends SnowballItem {
     }
 
     protected String tooltipTranslationKey = "tooltip.sj_rock_mod.rock.tooltip";
+    protected EntityType<?> rockEntityType = EntityTypeInit.ROCK_ENTITY;
+
+    public void setTooltipTranslationKey(String translationKey){
+        tooltipTranslationKey = translationKey;
+    }
 
     @Override
     @OnlyIn(Dist.CLIENT)
@@ -42,7 +49,7 @@ public class RockItem extends SnowballItem {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
         if (!worldIn.isRemote) {
-            RockEntity rockEntity = new RockEntity((EntityType<? extends SnowballEntity>) EntityTypeInit.ROCK_ENTITY, worldIn, playerIn);
+            ProjectileItemEntity rockEntity = createProjectileItemEntity(worldIn, playerIn);
             rockEntity.setItem(itemstack);
             rockEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.0F, 1.0F);
             worldIn.addEntity(rockEntity);
@@ -54,5 +61,9 @@ public class RockItem extends SnowballItem {
         }
 
         return ActionResult.func_233538_a_(itemstack, worldIn.isRemote());
+    }
+
+    protected ProjectileItemEntity createProjectileItemEntity(World worldIn, LivingEntity playerIn){
+        return new RockEntity((EntityType<? extends SnowballEntity>) rockEntityType, worldIn, playerIn);
     }
 }
