@@ -58,7 +58,7 @@ public class EventHandler {
                 if (player != null && !player.isSpectator() && !world.isAirBlock(event.getPos())) {
                     final BlockPos pos = event.getPos();
 
-                    if (InputMappings.isKeyDown(Minecraft.getInstance().getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) && world.getBlockState(pos).getBlock().equals(Blocks.OBSIDIAN) && player.inventory.getCurrentItem().getItem().equals(Blocks.COBBLESTONE.asItem())) {
+                    if (InputMappings.isKeyDown(Minecraft.getInstance().getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) && (world.getBlockState(pos).getBlock().equals(Blocks.OBSIDIAN) || world.getBlockState(pos).getBlock().equals(Blocks.BEDROCK)) && player.inventory.getCurrentItem().getItem().equals(Blocks.COBBLESTONE.asItem())) {
 
                         float offsetX = 0.5F + (event.getFace().getXOffset() * 0.7F);
                         float offsetY = 0.5F + (event.getFace().getYOffset() * 0.7F);

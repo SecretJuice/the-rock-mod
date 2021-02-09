@@ -30,6 +30,10 @@ public class RockEntity extends SnowballEntity {
         super(worldIn, throwerIn);
     }
 
+    public RockEntity(EntityType<? extends SnowballEntity> type, World worldIn, double x, double y, double z) {
+        super(worldIn, x, y, z);
+    }
+
     @OnlyIn(Dist.CLIENT)
     private IParticleData makeParticle() {
         return new BlockParticleData(ParticleTypes.BLOCK, Blocks.COBBLESTONE.getDefaultState());

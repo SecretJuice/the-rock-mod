@@ -1,5 +1,6 @@
 package io.github.secretjuice.rockmod;
 
+import io.github.secretjuice.rockmod.core.dispenserbehaviors.RockDispenserBehavior;
 import io.github.secretjuice.rockmod.core.init.ItemInit;
 import io.github.secretjuice.rockmod.network.handler.RockModPacketHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,6 +31,7 @@ public class RockMod
     private void setup(final FMLCommonSetupEvent event)
     {
         RockModPacketHandler.register();
+        RockDispenserBehavior.init();
     }
 
 }
