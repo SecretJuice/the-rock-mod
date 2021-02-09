@@ -16,7 +16,7 @@ public class ProjectileImpactParticleRenderer {
 
         ServerWorld serverWorld = rockEntity.world.getServer().getWorld(rockEntity.getEntityWorld().getDimensionKey());
 
-        IParticleData iparticledata = new BlockParticleData(ParticleTypes.BLOCK, Blocks.SMOOTH_STONE.getDefaultState());
+        IParticleData iparticledata = new BlockParticleData(ParticleTypes.BLOCK, rockEntity.getParticleBlockState());
 
         Random rand = new Random();
 

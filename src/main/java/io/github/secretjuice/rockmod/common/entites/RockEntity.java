@@ -43,6 +43,10 @@ public class RockEntity extends SnowballEntity {
     protected BlockState particleBlockState = Blocks.SMOOTH_STONE.getDefaultState();
     protected DamageSource entityDamageSource = RockDamageSource.ROCK;
 
+    public BlockState getParticleBlockState(){
+        return this.particleBlockState;
+    }
+
     protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();

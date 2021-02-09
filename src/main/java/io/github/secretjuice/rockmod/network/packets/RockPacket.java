@@ -74,20 +74,9 @@ public class RockPacket {
 
             if (msg.rockItemStack.getItem().equals(Blocks.COBBLESTONE.asItem())){
 
-                //player.inventory.addItemStackToInventory(new ItemStack(ItemInit.ROCK.get(), 1));
-
-                double speed = 0.3D;
-
                 ItemStack stack = new ItemStack(ItemInit.ROCK.get(), 1);
 
-                ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY() + facing.getY() * 0.2F, pos.getZ(), stack);
-
-                double d3 = world.rand.nextDouble() * 0.05D + 0.2D;
-
-                itemEntity.setMotion(world.rand.nextGaussian() * (double)0.1F * (double)speed + (double)facing.getX() * d3, world.rand.nextGaussian() * (double)0.1F * (double)speed + (double)facing.getY() * d3, world.rand.nextGaussian() * (double)0.1F * (double)speed + (double)facing.getZ() * d3);
-
-
-                world.addEntity(itemEntity);
+                spawnItemEntity(world, stack, pos, facing);
 
             }
 
@@ -105,9 +94,6 @@ public class RockPacket {
 
             }
 
-            //serverWorld.playSound(null, pos.getX(), pos.getY(), pos.getZ(), new SoundEvent(new ResourceLocation("minecraft", "item.axe.strip")), SoundCategory.BLOCKS, 1.0F, 1.0F);
-            //serverWorld.playSound(null, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.ancient_debris.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
-
             world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.lodestone.break")), SoundCategory.BLOCKS, 1.0F, 0F);
             world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.nether_bricks.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
 
@@ -120,6 +106,21 @@ public class RockPacket {
 
         });
         context.get().setPacketHandled(true);
+    }
+
+    private static void spawnItemEntity(World world, ItemStack itemStack, Vector3d pos, Vector3i facing){
+
+        double speed = 0.3D;
+
+        ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY() + facing.getY() * 0.2F, pos.getZ(), itemStack);
+
+        double d3 = world.rand.nextDouble() * 0.05D + 0.2D;
+
+        itemEntity.setMotion(world.rand.nextGaussian() * (double)0.1F * (double)speed + (double)facing.getX() * d3, world.rand.nextGaussian() * (double)0.1F * (double)speed + (double)facing.getY() * d3, world.rand.nextGaussian() * (double)0.1F * (double)speed + (double)facing.getZ() * d3);
+
+
+        world.addEntity(itemEntity);
+
     }
 
 

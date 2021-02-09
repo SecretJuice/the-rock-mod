@@ -42,9 +42,11 @@ public class EventHandler {
     }
 
     @SubscribeEvent
-    public static void onStoneSmash(final PlayerInteractEvent.RightClickBlock event) {
+    public static void onRightClickBlock(final PlayerInteractEvent.RightClickBlock event) {
 
         final World world = event.getWorld();
+
+        boolean clickingBlocks = false;
 
         if (world.isRemote()){
 
@@ -58,46 +60,20 @@ public class EventHandler {
                 if (player != null && !player.isSpectator() && !world.isAirBlock(event.getPos())) {
                     final BlockPos pos = event.getPos();
 
-                    if (InputMappings.isKeyDown(Minecraft.getInstance().getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) && (world.getBlockState(pos).getBlock().equals(Blocks.OBSIDIAN) || world.getBlockState(pos).getBlock().equals(Blocks.BEDROCK)) && player.inventory.getCurrentItem().getItem().equals(Blocks.COBBLESTONE.asItem())) {
+                    if (InputMappings.isKeyDown(Minecraft.getInstance().getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) && (world.getBlockState(pos).getBlock().equals(Blocks.OBSIDIAN) || world.getBlockState(pos).getBlock().equals(Blocks.BEDROCK))){ // && player.inventory.getCurrentItem().getItem().equals(Blocks.COBBLESTONE.asItem())) {
 
-                        float offsetX = 0.5F + (event.getFace().getXOffset() * 0.7F);
-                        float offsetY = 0.5F + (event.getFace().getYOffset() * 0.7F);
-                        float offsetZ = 0.5F + (event.getFace().getZOffset() * 0.7F);
+                        clickingBlocks = true;
 
-                        Vector3d packetPos = new Vector3d(pos.getX() + offsetX, pos.getY() + offsetY, pos.getZ() + offsetZ);
+                    }
 
-                        Vector3i packetFacing = new Vector3i((int)event.getFace().getXOffset(),  (int)event.getFace().getYOffset(), (int)event.getFace().getZOffset());
-
-                        RockPacket packet = new RockPacket(player.inventory.getCurrentItem(), packetPos, packetFacing);
-                        RockModPacketHandler.CHANNEL.sendToServer(packet);
-
-                        //world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.ancient_debris.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                        //world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), new SoundEvent(new ResourceLocation("minecraft", "item.axe.strip")), SoundCategory.BLOCKS, 1.0F, 1.0F);
-
-                        world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.lodestone.break")), SoundCategory.BLOCKS, 1.0F, 0F);
-                        world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.nether_bricks.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
-
-
-                        //Random rand = new Random();
-
-//                        for (int i = 0; i < 12; i++){
-//
-//                            world.addParticle(new BlockParticleData(ParticleTypes.BLOCK, Blocks.COBBLESTONE.getDefaultState()),
-//                                    pos.getX() + offsetX + ((rand.nextFloat() - 0.5F) * 0.75F),
-//                                    pos.getY() + offsetY + ((rand.nextFloat() - 0.5F) * 0.75F),
-//                                    pos.getZ() + offsetZ + ((rand.nextFloat() - 0.5F) * 0.75F),
-//                                    0, 0, 0);
-//
-//                        }
-                        smashingStone = true;
-                        event.setCanceled(true);
-
+                    if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.COBBLESTONE.asItem())){
+                        onStoneSmash(event);
                     }
                 }
             }
 
         }
-        else if (!world.isRemote() && smashingStone == true){
+        else if (!world.isRemote() && smashingStone){
 
             if (event.getHand().equals(Hand.OFF_HAND)){
                 return;
@@ -107,5 +83,29 @@ public class EventHandler {
             event.setCanceled(true);
         }
 
+    }
+
+    private static void onStoneSmash(PlayerInteractEvent.RightClickBlock event){
+
+        final BlockPos pos = event.getPos();
+        final PlayerEntity player = event.getPlayer();
+        final World world = event.getWorld();
+
+        float offsetX = 0.5F + (event.getFace().getXOffset() * 0.7F);
+        float offsetY = 0.5F + (event.getFace().getYOffset() * 0.7F);
+        float offsetZ = 0.5F + (event.getFace().getZOffset() * 0.7F);
+
+        Vector3d packetPos = new Vector3d(pos.getX() + offsetX, pos.getY() + offsetY, pos.getZ() + offsetZ);
+
+        Vector3i packetFacing = new Vector3i((int)event.getFace().getXOffset(),  (int)event.getFace().getYOffset(), (int)event.getFace().getZOffset());
+
+        RockPacket packet = new RockPacket(player.inventory.getCurrentItem(), packetPos, packetFacing);
+        RockModPacketHandler.CHANNEL.sendToServer(packet);
+
+        world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.lodestone.break")), SoundCategory.BLOCKS, 1.0F, 0F);
+        world.playSound(player, pos.getX(), pos.getY(), pos.getZ(),new SoundEvent(new ResourceLocation("minecraft", "block.nether_bricks.break")), SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+        smashingStone = true;
+        event.setCanceled(true);
     }
 }
