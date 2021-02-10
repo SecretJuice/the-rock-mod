@@ -88,6 +88,22 @@ public class RockPacket {
                 ItemStack stack = new ItemStack(ItemInit.OBSIDIAN_ROCK.get(), 1);
                 spawnItemEntity(world, stack, pos, facing);
             }
+            else if (msg.rockItemStack.getItem().equals(Blocks.ANDESITE.asItem())){
+                ItemStack stack = new ItemStack(ItemInit.ANDESITE_ROCK.get(), 1);
+                spawnItemEntity(world, stack, pos, facing);
+            }
+            else if (msg.rockItemStack.getItem().equals(Blocks.BASALT.asItem())){
+                ItemStack stack = new ItemStack(ItemInit.BASALT_ROCK.get(), 1);
+                spawnItemEntity(world, stack, pos, facing);
+            }
+            else if (msg.rockItemStack.getItem().equals(Blocks.DIORITE.asItem())){
+                ItemStack stack = new ItemStack(ItemInit.DIORITE_ROCK.get(), 1);
+                spawnItemEntity(world, stack, pos, facing);
+            }
+            else if (msg.rockItemStack.getItem().equals(Blocks.GRANITE.asItem())){
+                ItemStack stack = new ItemStack(ItemInit.GRANITE_ROCK.get(), 1);
+                spawnItemEntity(world, stack, pos, facing);
+            }
 
             ServerWorld serverWorld = world.getServer().getWorld(player.getEntityWorld().getDimensionKey());
 

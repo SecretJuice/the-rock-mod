@@ -25,6 +25,14 @@ public class ItemInit {
             () -> new BobRocksItem(new Item.Properties().group(ItemGroup.MISC).maxStackSize(16)));
     public static final RegistryObject<BlastRockItem> BLAST_ROCK = ITEMS.register("blastrock",
             () -> new BlastRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
+    public static final RegistryObject<AndesiteRockItem> ANDESITE_ROCK = ITEMS.register("andesiterock",
+            () -> new AndesiteRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
+    public static final RegistryObject<BasaltRockItem> BASALT_ROCK = ITEMS.register("basaltrock",
+            () -> new BasaltRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
+    public static final RegistryObject<DioriteRockItem> DIORITE_ROCK = ITEMS.register("dioriterock",
+            () -> new DioriteRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
+    public static final RegistryObject<GraniteRockItem> GRANITE_ROCK = ITEMS.register("graniterock",
+            () -> new GraniteRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
     public static final RegistryObject<PetRockItem> PET_ROCK = ITEMS.register("petrock",
             () -> new PetRockItem(new Item.Properties().group(ItemGroup.MISC).maxStackSize(1)));
 

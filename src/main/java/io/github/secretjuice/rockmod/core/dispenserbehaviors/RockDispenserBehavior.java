@@ -75,6 +75,42 @@ public class RockDispenserBehavior {
             }
         });
 
+        DispenserBlock.registerDispenseBehavior(ItemInit.ANDESITE_ROCK.get(), new ProjectileDispenseBehavior() {
+            @ParametersAreNonnullByDefault
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new AndesiteRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.ANDESITE_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
+        DispenserBlock.registerDispenseBehavior(ItemInit.BASALT_ROCK.get(), new ProjectileDispenseBehavior() {
+            @ParametersAreNonnullByDefault
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new BasaltRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.BASALT_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
+        DispenserBlock.registerDispenseBehavior(ItemInit.DIORITE_ROCK.get(), new ProjectileDispenseBehavior() {
+            @ParametersAreNonnullByDefault
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new DioriteRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.DIORITE_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
+        DispenserBlock.registerDispenseBehavior(ItemInit.GRANITE_ROCK.get(), new ProjectileDispenseBehavior() {
+            @ParametersAreNonnullByDefault
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new GraniteRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.GRANITE_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
     }
 
 

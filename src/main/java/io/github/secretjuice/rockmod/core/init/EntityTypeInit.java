@@ -10,5 +10,9 @@ public class EntityTypeInit {
     public static EntityType<?> OBSIDIAN_ROCK_ENTITY;
     public static EntityType<?> BOB_ROCKS_ENTITY;
     public static EntityType<?> BLAST_ROCK_ENTITY;
+    public static EntityType<?> DIORITE_ROCK_ENTITY;
+    public static EntityType<?> ANDESITE_ROCK_ENTITY;
+    public static EntityType<?> GRANITE_ROCK_ENTITY;
+    public static EntityType<?> BASALT_ROCK_ENTITY;
 
 }

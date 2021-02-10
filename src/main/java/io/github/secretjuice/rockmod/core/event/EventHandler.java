@@ -69,6 +69,18 @@ public class EventHandler {
                     else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.OBSIDIAN.asItem())){
                         onStoneSmash(event);
                     }
+                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.ANDESITE.asItem())){
+                        onStoneSmash(event);
+                    }
+                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.BASALT.asItem())){
+                        onStoneSmash(event);
+                    }
+                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.DIORITE.asItem())){
+                        onStoneSmash(event);
+                    }
+                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.GRANITE.asItem())){
+                        onStoneSmash(event);
+                    }
                 }
             }
 
