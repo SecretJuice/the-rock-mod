@@ -9,6 +9,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.ItemStack;
@@ -67,7 +68,8 @@ public class RockEntity extends SnowballEntity {
     }
 
     protected void dealDamageToHitEntity(Entity entity){
-        entity.attackEntityFrom(this.entityDamageSource, (float)this.entityDamage);
+        entity.attackEntityFrom(RockDamageSource.causeSourceDamage(this.entityDamageSource, this, this.func_234616_v_()), (float)this.entityDamage);
+
     }
 
     protected void applyKnockbackToHitEntity(Entity entity){
