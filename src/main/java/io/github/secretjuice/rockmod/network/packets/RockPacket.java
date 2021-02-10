@@ -84,6 +84,10 @@ public class RockPacket {
                 ItemStack stack = new ItemStack(ItemInit.END_ROCK.get(), 1);
                 spawnItemEntity(world, stack, pos, facing);
             }
+            else if (msg.rockItemStack.getItem().equals(Blocks.OBSIDIAN.asItem())){
+                ItemStack stack = new ItemStack(ItemInit.OBSIDIAN_ROCK.get(), 1);
+                spawnItemEntity(world, stack, pos, facing);
+            }
 
             ServerWorld serverWorld = world.getServer().getWorld(player.getEntityWorld().getDimensionKey());
 

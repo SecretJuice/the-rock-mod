@@ -2,7 +2,9 @@ package io.github.secretjuice.rockmod.common.items;
 
 import io.github.secretjuice.rockmod.common.entites.RockEntity;
 import io.github.secretjuice.rockmod.core.init.EntityTypeInit;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.client.util.InputMappings;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +22,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.lwjgl.glfw.GLFW;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -41,7 +44,12 @@ public class RockItem extends SnowballItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add(new TranslationTextComponent(this.tooltipTranslationKey));
+        if(InputMappings.isKeyDown(Minecraft.getInstance().getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_SHIFT)){
+            tooltip.add(new TranslationTextComponent(this.tooltipTranslationKey));
+        }
+        else{
+            tooltip.add(new TranslationTextComponent("tooltip.sj_rock_mod.holdshift.tooltip"));
+        }
     }
 
     @Override

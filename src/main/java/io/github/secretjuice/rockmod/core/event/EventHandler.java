@@ -75,6 +75,9 @@ public class EventHandler {
                     else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.END_STONE.asItem())){
                         onStoneSmash(event);
                     }
+                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.OBSIDIAN.asItem())){
+                        onStoneSmash(event);
+                    }
                 }
             }
 
