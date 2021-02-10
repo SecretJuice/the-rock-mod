@@ -1,9 +1,6 @@
 package io.github.secretjuice.rockmod.core.dispenserbehaviors;
 
-import io.github.secretjuice.rockmod.common.entites.EndRockEntity;
-import io.github.secretjuice.rockmod.common.entites.MagmaRockEntity;
-import io.github.secretjuice.rockmod.common.entites.ObsidianRockEntity;
-import io.github.secretjuice.rockmod.common.entites.RockEntity;
+import io.github.secretjuice.rockmod.common.entites.*;
 import io.github.secretjuice.rockmod.core.init.EntityTypeInit;
 import io.github.secretjuice.rockmod.core.init.ItemInit;
 import net.minecraft.block.DispenserBlock;
@@ -48,6 +45,14 @@ public class RockDispenserBehavior {
         DispenserBlock.registerDispenseBehavior(ItemInit.OBSIDIAN_ROCK.get(), new ProjectileDispenseBehavior() {
             protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
                 return (ProjectileEntity) Util.make(new ObsidianRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.OBSIDIAN_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
+        DispenserBlock.registerDispenseBehavior(ItemInit.BOB_ROCKS.get(), new ProjectileDispenseBehavior() {
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new BobRocksEntity((EntityType<? extends RockEntity>) EntityTypeInit.BOB_ROCKS_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
                     rock.setItem(stackIn);
                 });
             }

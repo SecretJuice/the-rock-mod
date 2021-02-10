@@ -1,10 +1,7 @@
 package io.github.secretjuice.rockmod.core.init;
 
 import io.github.secretjuice.rockmod.RockMod;
-import io.github.secretjuice.rockmod.common.items.EndRockItem;
-import io.github.secretjuice.rockmod.common.items.MagmaRockItem;
-import io.github.secretjuice.rockmod.common.items.ObsidianRockItem;
-import io.github.secretjuice.rockmod.common.items.RockItem;
+import io.github.secretjuice.rockmod.common.items.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
@@ -24,6 +21,7 @@ public class ItemInit {
             () -> new EndRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
     public static final RegistryObject<ObsidianRockItem> OBSIDIAN_ROCK = ITEMS.register("obsidianrock",
             () -> new ObsidianRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
-
+    public static final RegistryObject<BobRocksItem> BOB_ROCKS = ITEMS.register("bobrocks",
+            () -> new BobRocksItem(new Item.Properties().group(ItemGroup.MISC).maxStackSize(16)));
 
 }

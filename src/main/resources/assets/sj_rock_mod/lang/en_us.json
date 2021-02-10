@@ -3,12 +3,14 @@
     "item.sj_rock_mod.magmarock": "Magma Rock",
     "item.sj_rock_mod.endrock": "End Rock",
     "item.sj_rock_mod.obsidianrock": "Obsidian Rock",
+    "item.sj_rock_mod.bobrocks": "Bob Rocks",
 
     "tooltip.sj_rock_mod.holdshift.tooltip": "\u00A78Hold \u00A74[SHIFT]",
     "tooltip.sj_rock_mod.rock.tooltip": "\u00A76Yep, it's a rock.",
     "tooltip.sj_rock_mod.magmarock.tooltip": "\u00A76It's hot to the touch.",
     "tooltip.sj_rock_mod.endrock.tooltip": "\u00A76It posseses other worldly properties.",
     "tooltip.sj_rock_mod.obsidianrock.tooltip": "\u00A76Be careful with that edge.",
+    "tooltip.sj_rock_mod.bobrocks.tooltip": "\u00A76No mistakes, just happy accidents.",
 
     "death.attack.sj_rock_mod.rock": "%s was stoned to death with a Rock",
     "death.attack.sj_rock_mod.rock.player": "%1$s was stoned to death by %2$s with a Rock",
@@ -17,5 +19,7 @@
     "death.attack.sj_rock_mod.endrock": "%s was stoned to death with a End Rock",
     "death.attack.sj_rock_mod.endrock.player": "%1$s was stoned to death by %2$s with a End Rock",
     "death.attack.sj_rock_mod.obsidianrock": "%s was stoned to death with a Obsidian Rock",
-    "death.attack.sj_rock_mod.obsidianrock.player": "%1$s was stoned to death by %2$s with a Obsidian Rock"
+    "death.attack.sj_rock_mod.obsidianrock.player": "%1$s was stoned to death by %2$s with a Obsidian Rock",
+    "death.attack.sj_rock_mod.bobrocks": "%s had the devil beat out of 'em",
+    "death.attack.sj_rock_mod.bobrocks.player": "%1$s had the devil beat out of 'em by %2$s"
 }

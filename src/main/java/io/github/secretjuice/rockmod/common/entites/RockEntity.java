@@ -9,6 +9,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.BlockParticleData;
@@ -70,7 +71,7 @@ public class RockEntity extends SnowballEntity {
     }
 
     protected void applyKnockbackToHitEntity(Entity entity){
-        if (this.knockbackStrength > 0) {
+        if (this.knockbackStrength > 0 && entity instanceof PlayerEntity) {
             Vector3d vector3d = this.getMotion().mul(1.0D, 0.0D, 1.0D).normalize().scale((double)this.knockbackStrength * 0.6D);
             if (vector3d.lengthSquared() > 0.0D) {
                 entity.addVelocity(vector3d.x, 0.1D, vector3d.z);
