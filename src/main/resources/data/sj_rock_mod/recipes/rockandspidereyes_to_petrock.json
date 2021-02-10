@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "sj_rock_mod:rock"
+    }
+  ],
+  "result": {
+    "item": "sj_rock_mod:petrock",
+    "count": 1
+  }
+}

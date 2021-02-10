@@ -25,5 +25,7 @@ public class ItemInit {
             () -> new BobRocksItem(new Item.Properties().group(ItemGroup.MISC).maxStackSize(16)));
     public static final RegistryObject<BlastRockItem> BLAST_ROCK = ITEMS.register("blastrock",
             () -> new BlastRockItem(new Item.Properties().group(ItemGroup.COMBAT).maxStackSize(16)));
+    public static final RegistryObject<PetRockItem> PET_ROCK = ITEMS.register("petrock",
+            () -> new PetRockItem(new Item.Properties().group(ItemGroup.MISC).maxStackSize(1)));
 
 }

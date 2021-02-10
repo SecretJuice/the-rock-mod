@@ -5,6 +5,7 @@
     "item.sj_rock_mod.obsidianrock": "Obsidian Rock",
     "item.sj_rock_mod.bobrocks": "Bob Rocks",
     "item.sj_rock_mod.blastrock": "Blast Rock",
+    "item.sj_rock_mod.petrock": "Pet Rock",
 
     "tooltip.sj_rock_mod.holdshift.tooltip": "\u00A78Hold \u00A74[SHIFT]",
     "tooltip.sj_rock_mod.rock.tooltip": "\u00A76Yep, it's a rock.",
@@ -13,6 +14,8 @@
     "tooltip.sj_rock_mod.obsidianrock.tooltip": "\u00A76Be careful with that edge.",
     "tooltip.sj_rock_mod.bobrocks.tooltip": "\u00A76No mistakes, just happy accidents.",
     "tooltip.sj_rock_mod.blastrock.tooltip": "\u00A76Don't get too carried away there.",
+    "tooltip.sj_rock_mod.petrock.tooltip": "\u00A76What will you name it?",
+    "tooltip.sj_rock_mod.petrock.tooltip.named": "\u00A76Awwww....",
 
     "death.attack.sj_rock_mod.rock": "%s was stoned to death with a Rock",
     "death.attack.sj_rock_mod.rock.player": "%1$s was stoned to death by %2$s with a Rock",
