@@ -1,20 +1,13 @@
 package io.github.secretjuice.rockmod.core.event;
 
 import io.github.secretjuice.rockmod.RockMod;
-import io.github.secretjuice.rockmod.core.init.ItemInit;
 
 import io.github.secretjuice.rockmod.network.handler.RockModPacketHandler;
 import io.github.secretjuice.rockmod.network.packets.RockPacket;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.Sound;
 import net.minecraft.client.util.InputMappings;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.particles.BlockParticleData;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -29,8 +22,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import org.lwjgl.glfw.GLFW;
-
-import java.util.Random;
 
 @EventBusSubscriber(modid = RockMod.MOD_ID, bus = Bus.FORGE)
 public class EventHandler {

@@ -1,6 +1,5 @@
 package io.github.secretjuice.rockmod.common.items;
 
-import io.github.secretjuice.rockmod.common.entites.EndRockEntity;
 import io.github.secretjuice.rockmod.common.entites.ObsidianRockEntity;
 import io.github.secretjuice.rockmod.common.entites.RockEntity;
 import io.github.secretjuice.rockmod.core.init.EntityTypeInit;
