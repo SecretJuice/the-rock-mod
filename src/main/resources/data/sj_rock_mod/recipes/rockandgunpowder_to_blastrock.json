@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "*#*",
+    "#*#",
+    "*#*"
+  ],
+  "key": {
+    "#": {
+      "item": "sj_rock_mod:rock"
+    },
+    "*": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "sj_rock_mod:blastrock",
+    "count": 1
+  }
+}
