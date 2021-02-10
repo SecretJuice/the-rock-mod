@@ -2,6 +2,7 @@ package io.github.secretjuice.rockmod.core.init;
 
 import io.github.secretjuice.rockmod.RockMod;
 import io.github.secretjuice.rockmod.common.items.*;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
@@ -12,6 +13,8 @@ public class ItemInit {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
             RockMod.MOD_ID);
+
+    //ITEMS
 
     public static final RegistryObject<RockItem> ROCK = ITEMS.register("rock",
             () -> new RockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
@@ -35,5 +38,10 @@ public class ItemInit {
             () -> new GraniteRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
     public static final RegistryObject<PetRockItem> PET_ROCK = ITEMS.register("petrock",
             () -> new PetRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(1)));
+
+    //BLOCKS
+
+    public static final RegistryObject<BlockItem> STRANGE_GRAVEL = ITEMS.register("strangegravel",
+            () -> new BlockItem(BlockInit.STRANGE_GRAVEL.get(), new Item.Properties().group(RockMod.ROCK_GROUP)));
 
 }

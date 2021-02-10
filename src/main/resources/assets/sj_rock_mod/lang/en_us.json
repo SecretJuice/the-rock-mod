@@ -1,6 +1,9 @@
 {
     "itemGroup.sj_rock_mod_tab": "The Rock Mod",
 
+    "block.sj_rock_mod.strangegravel": "Strange Gravel",
+    "tile.sj_rock_mod.strangegravel": "Strange Gravel",
+
     "item.sj_rock_mod.rock": "Rock",
     "item.sj_rock_mod.magmarock": "Magma Rock",
     "item.sj_rock_mod.endrock": "End Rock",
