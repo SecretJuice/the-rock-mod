@@ -2,6 +2,7 @@ package io.github.secretjuice.rockmod.network.packets;
 
 import io.github.secretjuice.rockmod.core.event.EventHandler;
 import io.github.secretjuice.rockmod.core.init.ItemInit;
+import io.github.secretjuice.rockmod.core.maps.SmashableBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -9,6 +10,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.BlockParticleData;
@@ -72,38 +74,40 @@ public class RockPacket {
 
             Vector3i facing = msg.interactFacing;
 
-            if (msg.rockItemStack.getItem().equals(Blocks.COBBLESTONE.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.ROCK.get(), 1);
+            Item rockItemStack = msg.rockItemStack.getItem();
+
+            if (SmashableBlocks.Smashables.containsKey(rockItemStack)){
+                ItemStack stack = new ItemStack(SmashableBlocks.Smashables.get(rockItemStack), 1);
                 spawnItemEntity(world, stack, pos, facing);
             }
-            else if (msg.rockItemStack.getItem().equals(Blocks.MAGMA_BLOCK.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.MAGMA_ROCK.get(), 1);
-                spawnItemEntity(world, stack, pos, facing);
-            }
-            else if (msg.rockItemStack.getItem().equals(Blocks.END_STONE.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.END_ROCK.get(), 1);
-                spawnItemEntity(world, stack, pos, facing);
-            }
-            else if (msg.rockItemStack.getItem().equals(Blocks.OBSIDIAN.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.OBSIDIAN_ROCK.get(), 1);
-                spawnItemEntity(world, stack, pos, facing);
-            }
-            else if (msg.rockItemStack.getItem().equals(Blocks.ANDESITE.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.ANDESITE_ROCK.get(), 1);
-                spawnItemEntity(world, stack, pos, facing);
-            }
-            else if (msg.rockItemStack.getItem().equals(Blocks.BASALT.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.BASALT_ROCK.get(), 1);
-                spawnItemEntity(world, stack, pos, facing);
-            }
-            else if (msg.rockItemStack.getItem().equals(Blocks.DIORITE.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.DIORITE_ROCK.get(), 1);
-                spawnItemEntity(world, stack, pos, facing);
-            }
-            else if (msg.rockItemStack.getItem().equals(Blocks.GRANITE.asItem())){
-                ItemStack stack = new ItemStack(ItemInit.GRANITE_ROCK.get(), 1);
-                spawnItemEntity(world, stack, pos, facing);
-            }
+//            else if (msg.rockItemStack.getItem().equals(Blocks.MAGMA_BLOCK.asItem())){
+//                ItemStack stack = new ItemStack(ItemInit.MAGMA_ROCK.get(), 1);
+//                spawnItemEntity(world, stack, pos, facing);
+//            }
+//            else if (msg.rockItemStack.getItem().equals(Blocks.END_STONE.asItem())){
+//                ItemStack stack = new ItemStack(ItemInit.END_ROCK.get(), 1);
+//                spawnItemEntity(world, stack, pos, facing);
+//            }
+//            else if (msg.rockItemStack.getItem().equals(Blocks.OBSIDIAN.asItem())){
+//                ItemStack stack = new ItemStack(ItemInit.OBSIDIAN_ROCK.get(), 1);
+//                spawnItemEntity(world, stack, pos, facing);
+//            }
+//            else if (msg.rockItemStack.getItem().equals(Blocks.ANDESITE.asItem())){
+//                ItemStack stack = new ItemStack(ItemInit.ANDESITE_ROCK.get(), 1);
+//                spawnItemEntity(world, stack, pos, facing);
+//            }
+//            else if (msg.rockItemStack.getItem().equals(Blocks.BASALT.asItem())){
+//                ItemStack stack = new ItemStack(ItemInit.BASALT_ROCK.get(), 1);
+//                spawnItemEntity(world, stack, pos, facing);
+//            }
+//            else if (msg.rockItemStack.getItem().equals(Blocks.DIORITE.asItem())){
+//                ItemStack stack = new ItemStack(ItemInit.DIORITE_ROCK.get(), 1);
+//                spawnItemEntity(world, stack, pos, facing);
+//            }
+//            else if (msg.rockItemStack.getItem().equals(Blocks.GRANITE.asItem())){
+//                ItemStack stack = new ItemStack(ItemInit.GRANITE_ROCK.get(), 1);
+//                spawnItemEntity(world, stack, pos, facing);
+//            }
 
             ServerWorld serverWorld = world.getServer().getWorld(player.getEntityWorld().getDimensionKey());
 

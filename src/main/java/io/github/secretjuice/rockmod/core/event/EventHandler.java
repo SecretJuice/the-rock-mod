@@ -2,6 +2,7 @@ package io.github.secretjuice.rockmod.core.event;
 
 import io.github.secretjuice.rockmod.RockMod;
 
+import io.github.secretjuice.rockmod.core.maps.SmashableBlocks;
 import io.github.secretjuice.rockmod.network.handler.RockModPacketHandler;
 import io.github.secretjuice.rockmod.network.packets.RockPacket;
 import net.minecraft.block.Blocks;
@@ -57,30 +58,30 @@ public class EventHandler {
 
                     }
 
-                    if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.COBBLESTONE.asItem())){
+                    if (clickingBlocks && SmashableBlocks.Smashables.containsKey(player.inventory.getCurrentItem().getItem())){
                         onStoneSmash(event);
                     }
-                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.MAGMA_BLOCK.asItem())){
-                        onStoneSmash(event);
-                    }
-                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.END_STONE.asItem())){
-                        onStoneSmash(event);
-                    }
-                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.OBSIDIAN.asItem())){
-                        onStoneSmash(event);
-                    }
-                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.ANDESITE.asItem())){
-                        onStoneSmash(event);
-                    }
-                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.BASALT.asItem())){
-                        onStoneSmash(event);
-                    }
-                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.DIORITE.asItem())){
-                        onStoneSmash(event);
-                    }
-                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.GRANITE.asItem())){
-                        onStoneSmash(event);
-                    }
+//                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.MAGMA_BLOCK.asItem())){
+//                        onStoneSmash(event);
+//                    }
+//                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.END_STONE.asItem())){
+//                        onStoneSmash(event);
+//                    }
+//                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.OBSIDIAN.asItem())){
+//                        onStoneSmash(event);
+//                    }
+//                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.ANDESITE.asItem())){
+//                        onStoneSmash(event);
+//                    }
+//                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.BASALT.asItem())){
+//                        onStoneSmash(event);
+//                    }
+//                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.DIORITE.asItem())){
+//                        onStoneSmash(event);
+//                    }
+//                    else if (clickingBlocks && player.inventory.getCurrentItem().getItem().equals(Blocks.GRANITE.asItem())){
+//                        onStoneSmash(event);
+//                    }
                 }
             }
 

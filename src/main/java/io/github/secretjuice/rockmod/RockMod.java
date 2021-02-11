@@ -3,6 +3,7 @@ package io.github.secretjuice.rockmod;
 import io.github.secretjuice.rockmod.core.dispenserbehaviors.RockDispenserBehavior;
 import io.github.secretjuice.rockmod.core.init.BlockInit;
 import io.github.secretjuice.rockmod.core.init.ItemInit;
+import io.github.secretjuice.rockmod.core.maps.SmashableBlocks;
 import io.github.secretjuice.rockmod.network.handler.RockModPacketHandler;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -37,6 +38,7 @@ public class RockMod
     {
         RockModPacketHandler.register();
         RockDispenserBehavior.init();
+        SmashableBlocks.initializeHashMap();
     }
 
     public static class RockItemGroup extends ItemGroup {
