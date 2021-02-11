@@ -120,6 +120,15 @@ public class RockDispenserBehavior {
             }
         });
 
+        DispenserBlock.registerDispenseBehavior(ItemInit.MOSSY_ROCK.get(), new ProjectileDispenseBehavior() {
+            @ParametersAreNonnullByDefault
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new MossyRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.MOSSY_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
     }
 
 

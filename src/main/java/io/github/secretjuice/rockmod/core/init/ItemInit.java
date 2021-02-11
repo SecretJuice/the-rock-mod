@@ -40,6 +40,8 @@ public class ItemInit {
             () -> new SandRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
     public static final RegistryObject<NetherRockItem> NETHER_ROCK = ITEMS.register("netherrock",
             () -> new NetherRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
+    public static final RegistryObject<MossyRockItem> MOSSY_ROCK = ITEMS.register("mossyrock",
+            () -> new MossyRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
     public static final RegistryObject<PetRockItem> PET_ROCK = ITEMS.register("petrock",
             () -> new PetRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(1)));
     public static final RegistryObject<BobRocksItem> BOB_ROCKS = ITEMS.register("bobrocks",
