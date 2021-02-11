@@ -111,6 +111,15 @@ public class RockDispenserBehavior {
             }
         });
 
+        DispenserBlock.registerDispenseBehavior(ItemInit.SAND_ROCK.get(), new ProjectileDispenseBehavior() {
+            @ParametersAreNonnullByDefault
+            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                return (ProjectileEntity) Util.make(new SandRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.SAND_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                    rock.setItem(stackIn);
+                });
+            }
+        });
+
     }
 
 

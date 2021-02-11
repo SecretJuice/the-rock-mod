@@ -14,5 +14,7 @@ public class EntityTypeInit {
     public static EntityType<?> ANDESITE_ROCK_ENTITY;
     public static EntityType<?> GRANITE_ROCK_ENTITY;
     public static EntityType<?> BASALT_ROCK_ENTITY;
+    public static EntityType<?> SAND_ROCK_ENTITY;
+    public static EntityType<?> NETHER_ROCK_ENTITY;
 
 }
