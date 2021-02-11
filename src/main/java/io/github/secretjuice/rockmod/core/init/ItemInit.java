@@ -16,6 +16,7 @@ public class ItemInit {
 
     //ITEMS
 
+    //ROCKS
     public static final RegistryObject<RockItem> ROCK = ITEMS.register("rock",
             () -> new RockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
     public static final RegistryObject<MagmaRockItem> MAGMA_ROCK = ITEMS.register("magmarock",
@@ -39,9 +40,13 @@ public class ItemInit {
     public static final RegistryObject<PetRockItem> PET_ROCK = ITEMS.register("petrock",
             () -> new PetRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(1)));
 
+    //OTHER ITEMS
+    public static final RegistryObject<StrangeDustItem> STRANGE_DUST = ITEMS.register("strangedust",
+            () -> new StrangeDustItem(new Item.Properties().group(RockMod.ROCK_GROUP)));
+
     //BLOCKS
 
     public static final RegistryObject<BlockItem> STRANGE_GRAVEL = ITEMS.register("strangegravel",
-            () -> new BlockItem(BlockInit.STRANGE_GRAVEL.get(), new Item.Properties().group(RockMod.ROCK_GROUP)));
+            () -> new StrangeGravelItem(BlockInit.STRANGE_GRAVEL.get(), new Item.Properties().group(RockMod.ROCK_GROUP)));
 
 }

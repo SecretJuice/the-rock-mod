@@ -15,6 +15,7 @@
     "item.sj_rock_mod.basaltrock": "Basalt Rock",
     "item.sj_rock_mod.dioriterock": "Diorite Rock",
     "item.sj_rock_mod.graniterock": "Granite Rock",
+    "item.sj_rock_mod.strangedust": "Strange Dust",
 
     "tooltip.sj_rock_mod.holdshift.tooltip": "\u00A78Hold \u00A74[SHIFT]",
     "tooltip.sj_rock_mod.rock.tooltip": "\u00A76Yep, it's a rock.",
@@ -27,6 +28,8 @@
     "tooltip.sj_rock_mod.basaltrock.tooltip": "\u00A76It's oddly blue in color.",
     "tooltip.sj_rock_mod.dioriterock.tooltip": "\u00A76Why does it look like bird poo?",
     "tooltip.sj_rock_mod.graniterock.tooltip": "\u00A76Come up with a tooltip sometime, will ya?",
+    "tooltip.sj_rock_mod.strangedust.tooltip": "\u00A76There's a bit of everything in there...",
+    "tooltip.sj_rock_mod.strangegravel.tooltip": "\u00A76What's inside of here?",
     "tooltip.sj_rock_mod.petrock.tooltip": "\u00A76What will you name it?",
     "tooltip.sj_rock_mod.petrock.tooltip.named": "\u00A76Awwww....",
 
