@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "*#*",
+    "#*#",
+    "*#*"
+  ],
+  "key": {
+    "#": {
+      "item": "sj_rock_mod:rock"
+    },
+    "*": {
+      "item": "sj_rock_mod:strangedust"
+    }
+  },
+  "result": {
+    "item": "sj_rock_mod:strangegravel",
+    "count": 1
+  }
+}
