@@ -10,11 +10,11 @@
       "item": "sj_rock_mod:rock"
     },
     "*": {
-      "item": "sj_rock_mod:strangedust"
+      "item": "minecraft:gravel"
     }
   },
   "result": {
-    "item": "sj_rock_mod:strangegravel",
-    "count": 1
+    "item": "minecraft:sand",
+    "count": 4
   }
 }
