@@ -44,6 +44,8 @@ public class ItemInit {
             () -> new MossyRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
     public static final RegistryObject<FertileRockItem> FERTILE_ROCK = ITEMS.register("fertilerock",
             () -> new FertileRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
+    public static final RegistryObject<ForceRockItem> FORCE_ROCK = ITEMS.register("forcerock",
+            () -> new ForceRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
     public static final RegistryObject<PetRockItem> PET_ROCK = ITEMS.register("petrock",
             () -> new PetRockItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(1)));
     public static final RegistryObject<BobRocksItem> BOB_ROCKS = ITEMS.register("bobrocks",
