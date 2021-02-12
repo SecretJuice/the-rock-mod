@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:gun_powder"
+    },
+    {
+      "item": "sj_rock_mod:magmarock"
+    }
+  ],
+  "result": {
+    "item": "sj_rock_mod:flamerock",
+    "count": 1
+  }
+}
