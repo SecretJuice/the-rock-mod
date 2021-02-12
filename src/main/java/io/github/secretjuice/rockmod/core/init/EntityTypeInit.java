@@ -20,5 +20,6 @@ public class EntityTypeInit {
     public static EntityType<?> FERTILE_ROCK_ENTITY;
     public static EntityType<?> FORCE_ROCK_ENTITY;
     public static EntityType<?> WEB_ROCK_ENTITY;
+    public static EntityType<?> FLAME_ROCK_ENTITY;
 
 }

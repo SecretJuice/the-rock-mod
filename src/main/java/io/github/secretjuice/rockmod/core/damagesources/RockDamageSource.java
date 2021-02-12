@@ -24,6 +24,7 @@ public class RockDamageSource {
     public static final DamageSource FERTILE_ROCK = new DamageSource("sj_rock_mod.fertilerock").setProjectile();
     public static final DamageSource FORCE_ROCK = new DamageSource("sj_rock_mod.forcerock").setProjectile();
     public static final DamageSource WEB_ROCK = new DamageSource("sj_rock_mod.webrock").setProjectile();
+    public static final DamageSource FLAME_ROCK = new DamageSource("sj_rock_mod.flamerock").setProjectile();
 
     public static DamageSource causeSourceDamage(DamageSource baseDamageSource, Entity source, @Nullable Entity indirectEntityIn) {
         return (new IndirectEntityDamageSource(baseDamageSource.getDamageType(), source, indirectEntityIn)).setProjectile();
