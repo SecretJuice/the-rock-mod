@@ -147,10 +147,19 @@ public class RockDispenserBehavior {
             }
         });
 
-        DispenserBlock.registerDispenseBehavior(ItemInit.FORCE_ROCK.get(), new ProjectileDispenseBehavior() {
+//        DispenserBlock.registerDispenseBehavior(ItemInit.FORCE_ROCK.get(), new ProjectileDispenseBehavior() {
+//            @ParametersAreNonnullByDefault
+//            protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+//                return (ProjectileEntity) Util.make(new ForceRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.FORCE_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+//                    rock.setItem(stackIn);
+//                });
+//            }
+//        });
+
+        DispenserBlock.registerDispenseBehavior(ItemInit.WEB_ROCK.get(), new ProjectileDispenseBehavior() {
             @ParametersAreNonnullByDefault
             protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-                return (ProjectileEntity) Util.make(new ForceRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.FORCE_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
+                return (ProjectileEntity) Util.make(new WebRockEntity((EntityType<? extends RockEntity>) EntityTypeInit.WEB_ROCK_ENTITY, worldIn, position.getX(), position.getY(), position.getZ()), (rock) -> {
                     rock.setItem(stackIn);
                 });
             }
