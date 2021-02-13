@@ -23,6 +23,7 @@
     "item.sj_rock_mod.webrock": "Web Rock",
     "item.sj_rock_mod.flamerock": "Flame Rock",
     "item.sj_rock_mod.strangedust": "Strange Dust",
+    "item.sj_rock_mod.rocklobster": "Rock Lobster",
 
     "tooltip.sj_rock_mod.holdshift.tooltip": "\u00A78Hold \u00A74[SHIFT]",
     "tooltip.sj_rock_mod.rock.tooltip": "\u00A76Yep, it's a rock.",
@@ -43,6 +44,7 @@
     "tooltip.sj_rock_mod.webrock.tooltip": "\u00A76It's sticky, but doesn't leave residue behind.",
     "tooltip.sj_rock_mod.flamerock.tooltip": "\u00A76Your hands burn as they hold it.",
     "tooltip.sj_rock_mod.strangedust.tooltip": "\u00A76There's a bit of everything in there...",
+    "tooltip.sj_rock_mod.rocklobster.tooltip": "\u00A76Ski-doo-be-dop!",
     "tooltip.sj_rock_mod.strangegravel.tooltip": "\u00A76What's inside of here?",
     "tooltip.sj_rock_mod.petrock.tooltip": "\u00A76What will you name it?",
     "tooltip.sj_rock_mod.petrock.tooltip.named": "\u00A76Awwww....",

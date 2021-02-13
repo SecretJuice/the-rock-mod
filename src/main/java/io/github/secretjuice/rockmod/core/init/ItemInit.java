@@ -4,6 +4,7 @@ import io.github.secretjuice.rockmod.RockMod;
 import io.github.secretjuice.rockmod.common.items.*;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
@@ -58,6 +59,9 @@ public class ItemInit {
     //OTHER ITEMS
     public static final RegistryObject<StrangeDustItem> STRANGE_DUST = ITEMS.register("strangedust",
             () -> new StrangeDustItem(new Item.Properties().group(RockMod.ROCK_GROUP)));
+    public static final RegistryObject<RockLobsterItem> ROCK_LOBSTER = ITEMS.register("rocklobster",
+            () -> new RockLobsterItem(new Item.Properties().group(RockMod.ROCK_GROUP)
+                    .food(new Food.Builder().hunger(4).saturation(0.4F).meat().build())));
 
     //BLOCKS
 

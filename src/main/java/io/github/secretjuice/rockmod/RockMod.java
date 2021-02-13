@@ -6,19 +6,17 @@ import io.github.secretjuice.rockmod.core.init.BlockInit;
 import io.github.secretjuice.rockmod.core.init.ItemInit;
 import io.github.secretjuice.rockmod.core.maps.SmashableBlocks;
 import io.github.secretjuice.rockmod.network.handler.RockModPacketHandler;
+import net.minecraft.advancements.criterion.EntityPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.loot.conditions.BlockStateProperty;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.loot.conditions.Inverted;
-import net.minecraft.loot.conditions.MatchTool;
+import net.minecraft.loot.*;
+import net.minecraft.loot.conditions.*;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,11 +24,13 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -40,8 +40,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 @Mod(RockMod.MOD_ID)
 public class RockMod
@@ -68,6 +70,7 @@ public class RockMod
     private static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, MOD_ID);
 
     private static final RegistryObject<StrangeDustLeavesModifier.Serializer> BREAK_LEAVES = GLM.register("break_leaves", StrangeDustLeavesModifier.Serializer::new);
+    private static final RegistryObject<RockLobsterFishingModifier.Serializer> ROCK_LOBSTER_FISH = GLM.register("rocklobster_fish", RockLobsterFishingModifier.Serializer::new);
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class DataGenerators {
@@ -121,6 +124,13 @@ public class RockMod
                     },
                     0.25F, 1, ItemInit.STRANGE_DUST.get()
             ));
+
+            add("rocklobster_fish", ROCK_LOBSTER_FISH.get(), new RockLobsterFishingModifier(
+                    new ILootCondition[]{
+                            MatchTool.builder(ItemPredicate.Builder.create().item(Items.FISHING_ROD)).build(),
+                    },
+                    1.0F, ItemInit.ROCK_LOBSTER.get()
+            ));
         }
     }
 
@@ -164,6 +174,58 @@ public class RockMod
                 json.addProperty("dropChance", instance.dropChance);
                 json.addProperty("dropNum", instance.dropNum);
                 json.addProperty("drop", ItemInit.STRANGE_DUST.get().toString());
+                return json;
+            }
+        }
+
+    }
+
+    private static class RockLobsterFishingModifier extends LootModifier{
+
+        private final float dropChance;
+        private final Item dropItem;
+        private final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "field_186504_g");
+
+        public RockLobsterFishingModifier(ILootCondition[] conditions, float dropChanceIn, Item dropItemIn) {
+            super(conditions);
+            dropChance = dropChanceIn;
+            dropItem = dropItemIn;
+
+        }
+
+        @Nonnull
+        @Override
+        public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context){
+
+            try{
+
+                Set<LootTable> set = (Set<LootTable>) LOOT_FIELD.get(context);
+
+                Random rand = new Random();
+                if(set.isEmpty() && rand.nextFloat() < dropChance){
+                    generatedLoot.add(new ItemStack(dropItem, 1));
+                }
+                return generatedLoot;
+
+            }
+            catch (IllegalArgumentException | IllegalAccessException e){
+                throw new RuntimeException("Could not access lootTables", e);
+            }
+        }
+
+        private static class Serializer extends GlobalLootModifierSerializer<RockLobsterFishingModifier> {
+
+            @Override
+            public RockLobsterFishingModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditons) {
+                float dataChance = JSONUtils.getFloat(object, "chance");
+                Item dataItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(JSONUtils.getString(object, "item")));
+                return new RockLobsterFishingModifier(conditons, dataChance, dataItem);
+            }
+            @Override
+            public JsonObject write(RockLobsterFishingModifier instance){
+                JsonObject json = makeConditions(instance.conditions);
+                json.addProperty("chance", instance.dropChance);
+                json.addProperty("item", ItemInit.ROCK_LOBSTER.get().toString());
                 return json;
             }
         }
