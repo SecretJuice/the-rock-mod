@@ -3,23 +3,23 @@
 modLoader="javafml" #mandatory
 loaderVersion="[35,)" #mandatory
 license="MIT Liscense" #mandatory https://choosealicense.com/
-issueTrackerURL="http://fillmein/" #optional
+issueTrackerURL="https://github.com/SecretJuice/the-rock-mod/issues" #optional
 
 [[mods]] #mandatory
 modId="sj_rock_mod" #mandatory
-version="1.16.4-0.0.6.0" #mandatory
+version="1.16.4-1.0.0.0" #mandatory
 displayName="The Rock Mod" #mandatory
 updateJSONURL="http://fillmein.me/" #optional
-displayURL="http://fillmein.com/" #optional
+displayURL="https://github.com/SecretJuice/the-rock-mod" #optional
 
-#logoFile="fillmein.png" #optional
+logoFile="/assets.sj_rock_mod/textures/items/rock.png" #optional
 
-credits="I'd like to thank the academy - Fill me in" #optional
+credits="Thanks to mathidiot for the textures." #optional
 authors="SecretJuice" #optional
 description='''
 A mod that adds rocks you can throw!
 
-Left-Click obsidian with cobblestone to get rocks.
+Hold LControl and Right-Click on obsidian or bedrock with different stones to get rocks.
 
 Use rocks to throw them like snowballs!
 ''' #mandatory
