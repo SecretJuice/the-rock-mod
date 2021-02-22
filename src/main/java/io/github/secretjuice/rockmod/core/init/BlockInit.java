@@ -12,9 +12,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class BlockInit {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RockMod.MOD_ID);
-
-    public static final RegistryObject<Block> STRANGE_GRAVEL = BLOCKS.register("strangegravel",
-            () -> new StrangeGravelBlock(AbstractBlock.Properties.from(Blocks.GRAVEL).harvestTool(ToolType.SHOVEL)));
+//    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RockMod.MOD_ID);
+//
+//    public static final RegistryObject<Block> STRANGE_GRAVEL = BLOCKS.register("strangegravel",
+//            () -> new StrangeGravelBlock(AbstractBlock.Properties.from(Blocks.GRAVEL).harvestTool(ToolType.SHOVEL)));
 
 }

@@ -57,15 +57,16 @@ public class ItemInit {
             () -> new BobRocksItem(new Item.Properties().group(RockMod.ROCK_GROUP).maxStackSize(16)));
 
     //OTHER ITEMS
-    public static final RegistryObject<StrangeDustItem> STRANGE_DUST = ITEMS.register("strangedust",
-            () -> new StrangeDustItem(new Item.Properties().group(RockMod.ROCK_GROUP)));
-    public static final RegistryObject<RockLobsterItem> ROCK_LOBSTER = ITEMS.register("rocklobster",
-            () -> new RockLobsterItem(new Item.Properties().group(RockMod.ROCK_GROUP)
-                    .food(new Food.Builder().hunger(4).saturation(0.4F).meat().build())));
+
+//    public static final RegistryObject<StrangeDustItem> STRANGE_DUST = ITEMS.register("strangedust",
+//            () -> new StrangeDustItem(new Item.Properties().group(RockMod.ROCK_GROUP)));
+//    public static final RegistryObject<RockLobsterItem> ROCK_LOBSTER = ITEMS.register("rocklobster",
+//            () -> new RockLobsterItem(new Item.Properties().group(RockMod.ROCK_GROUP)
+//                    .food(new Food.Builder().hunger(4).saturation(0.4F).meat().build())));
 
     //BLOCKS
 
-    public static final RegistryObject<StrangeGravelItem> STRANGE_GRAVEL = ITEMS.register("strangegravel",
-            () -> new StrangeGravelItem(BlockInit.STRANGE_GRAVEL.get(), new Item.Properties().group(RockMod.ROCK_GROUP)));
+//    public static final RegistryObject<StrangeGravelItem> STRANGE_GRAVEL = ITEMS.register("strangegravel",
+//            () -> new StrangeGravelItem(BlockInit.STRANGE_GRAVEL.get(), new Item.Properties().group(RockMod.ROCK_GROUP)));
 
 }

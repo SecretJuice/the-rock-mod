@@ -59,29 +59,29 @@ public class RockMod
         bus.addListener(this::setup);
 
         ItemInit.ITEMS.register(bus);
-        BlockInit.BLOCKS.register(bus);
-        GLM.register(bus);
+//        BlockInit.BLOCKS.register(bus);
+//        GLM.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
 
 
-    private static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, MOD_ID);
+//    private static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, MOD_ID);
 
-    private static final RegistryObject<StrangeDustLeavesModifier.Serializer> BREAK_LEAVES = GLM.register("break_leaves", StrangeDustLeavesModifier.Serializer::new);
-    private static final RegistryObject<RockLobsterFishingModifier.Serializer> ROCK_LOBSTER_FISH = GLM.register("rocklobster_fish", RockLobsterFishingModifier.Serializer::new);
+//    private static final RegistryObject<StrangeDustLeavesModifier.Serializer> BREAK_LEAVES = GLM.register("break_leaves", StrangeDustLeavesModifier.Serializer::new);
+//    private static final RegistryObject<RockLobsterFishingModifier.Serializer> ROCK_LOBSTER_FISH = GLM.register("rocklobster_fish", RockLobsterFishingModifier.Serializer::new);
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class DataGenerators {
-
-        @SubscribeEvent
-        public static void registerDataProviders(GatherDataEvent event){
-
-            event.getGenerator().addProvider(new LootDataProvider(event.getGenerator(), MOD_ID));
-
-        }
-    }
+//    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+//    public static class DataGenerators {
+//
+//        @SubscribeEvent
+//        public static void registerDataProviders(GatherDataEvent event){
+//
+//            event.getGenerator().addProvider(new LootDataProvider(event.getGenerator(), MOD_ID));
+//
+//        }
+//    }
 
     private void setup(final FMLCommonSetupEvent event)
     {
@@ -107,129 +107,129 @@ public class RockMod
 
 
 
-    private static class LootDataProvider extends GlobalLootModifierProvider
-    {
-        public LootDataProvider(DataGenerator gen, String modid)
-        {
-            super(gen, modid);
-        }
+//    private static class LootDataProvider extends GlobalLootModifierProvider
+//    {
+//        public LootDataProvider(DataGenerator gen, String modid)
+//        {
+//            super(gen, modid);
+//        }
+//
+//        @Override
+//        protected void start()
+//        {
+//            add("break_leaves", BREAK_LEAVES.get(), new StrangeDustLeavesModifier(
+//                    new ILootCondition[]{
+//                            MatchTool.builder(ItemPredicate.Builder.create().item(Items.STICK)).build(),
+//                            BlockStateProperty.builder(Blocks.OAK_LEAVES).build()
+//                    },
+//                    0.25F, 1, ItemInit.STRANGE_DUST.get()
+//            ));
+//
+//            add("rocklobster_fish", ROCK_LOBSTER_FISH.get(), new RockLobsterFishingModifier(
+//                    new ILootCondition[]{
+//                            MatchTool.builder(ItemPredicate.Builder.create().item(Items.FISHING_ROD)).build(),
+//                    },
+//                    1.0F, ItemInit.ROCK_LOBSTER.get()
+//            ));
+//        }
+//    }
 
-        @Override
-        protected void start()
-        {
-            add("break_leaves", BREAK_LEAVES.get(), new StrangeDustLeavesModifier(
-                    new ILootCondition[]{
-                            MatchTool.builder(ItemPredicate.Builder.create().item(Items.STICK)).build(),
-                            BlockStateProperty.builder(Blocks.OAK_LEAVES).build()
-                    },
-                    0.25F, 1, ItemInit.STRANGE_DUST.get()
-            ));
-
-            add("rocklobster_fish", ROCK_LOBSTER_FISH.get(), new RockLobsterFishingModifier(
-                    new ILootCondition[]{
-                            MatchTool.builder(ItemPredicate.Builder.create().item(Items.FISHING_ROD)).build(),
-                    },
-                    1.0F, ItemInit.ROCK_LOBSTER.get()
-            ));
-        }
-    }
-
-    private static class StrangeDustLeavesModifier extends LootModifier{
-
-        private final float dropChance;
-        private final int dropNum;
-        private final Item dropItem;
-
-        public StrangeDustLeavesModifier(ILootCondition[] conditions, float dropChanceIn, int dropNumIn, Item dropItemIn) {
-            super(conditions);
-            dropChance = dropChanceIn;
-            dropNum = dropNumIn;
-            dropItem = dropItemIn;
-
-        }
-
-        @Nonnull
-        @Override
-        public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context){
-
-            Random rand = new Random();
-            if(rand.nextFloat() < dropChance){
-                generatedLoot.add(new ItemStack(dropItem, dropNum));
-            }
-            return generatedLoot;
-        }
-
-        private static class Serializer extends GlobalLootModifierSerializer<StrangeDustLeavesModifier> {
-
-            @Override
-            public StrangeDustLeavesModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditons) {
-                float dataChance = JSONUtils.getFloat(object, "dropChance");
-                int dataNum = JSONUtils.getInt(object, "dropNum");
-                Item dataItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(JSONUtils.getString(object, "drop")));
-                return new StrangeDustLeavesModifier(conditons, dataChance, dataNum, dataItem);
-            }
-            @Override
-            public JsonObject write(StrangeDustLeavesModifier instance){
-                JsonObject json = makeConditions(instance.conditions);
-                json.addProperty("dropChance", instance.dropChance);
-                json.addProperty("dropNum", instance.dropNum);
-                json.addProperty("drop", ItemInit.STRANGE_DUST.get().toString());
-                return json;
-            }
-        }
-
-    }
-
-    private static class RockLobsterFishingModifier extends LootModifier{
-
-        private final float dropChance;
-        private final Item dropItem;
-        private final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "field_186504_g");
-
-        public RockLobsterFishingModifier(ILootCondition[] conditions, float dropChanceIn, Item dropItemIn) {
-            super(conditions);
-            dropChance = dropChanceIn;
-            dropItem = dropItemIn;
-
-        }
-
-        @Nonnull
-        @Override
-        public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context){
-
-            try{
-
-                Set<LootTable> set = (Set<LootTable>) LOOT_FIELD.get(context);
-
-                Random rand = new Random();
-                if(set.isEmpty() && rand.nextFloat() < dropChance){
-                    generatedLoot.add(new ItemStack(dropItem, 1));
-                }
-                return generatedLoot;
-
-            }
-            catch (IllegalArgumentException | IllegalAccessException e){
-                throw new RuntimeException("Could not access lootTables", e);
-            }
-        }
-
-        private static class Serializer extends GlobalLootModifierSerializer<RockLobsterFishingModifier> {
-
-            @Override
-            public RockLobsterFishingModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditons) {
-                float dataChance = JSONUtils.getFloat(object, "chance");
-                Item dataItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(JSONUtils.getString(object, "item")));
-                return new RockLobsterFishingModifier(conditons, dataChance, dataItem);
-            }
-            @Override
-            public JsonObject write(RockLobsterFishingModifier instance){
-                JsonObject json = makeConditions(instance.conditions);
-                json.addProperty("chance", instance.dropChance);
-                json.addProperty("item", ItemInit.ROCK_LOBSTER.get().toString());
-                return json;
-            }
-        }
-
-    }
+//    private static class StrangeDustLeavesModifier extends LootModifier{
+//
+//        private final float dropChance;
+//        private final int dropNum;
+//        private final Item dropItem;
+//
+//        public StrangeDustLeavesModifier(ILootCondition[] conditions, float dropChanceIn, int dropNumIn, Item dropItemIn) {
+//            super(conditions);
+//            dropChance = dropChanceIn;
+//            dropNum = dropNumIn;
+//            dropItem = dropItemIn;
+//
+//        }
+//
+//        @Nonnull
+//        @Override
+//        public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context){
+//
+//            Random rand = new Random();
+//            if(rand.nextFloat() < dropChance){
+//                generatedLoot.add(new ItemStack(dropItem, dropNum));
+//            }
+//            return generatedLoot;
+//        }
+//
+//        private static class Serializer extends GlobalLootModifierSerializer<StrangeDustLeavesModifier> {
+//
+//            @Override
+//            public StrangeDustLeavesModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditons) {
+//                float dataChance = JSONUtils.getFloat(object, "dropChance");
+//                int dataNum = JSONUtils.getInt(object, "dropNum");
+//                Item dataItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(JSONUtils.getString(object, "drop")));
+//                return new StrangeDustLeavesModifier(conditons, dataChance, dataNum, dataItem);
+//            }
+//            @Override
+//            public JsonObject write(StrangeDustLeavesModifier instance){
+//                JsonObject json = makeConditions(instance.conditions);
+//                json.addProperty("dropChance", instance.dropChance);
+//                json.addProperty("dropNum", instance.dropNum);
+//                json.addProperty("drop", ItemInit.STRANGE_DUST.get().toString());
+//                return json;
+//            }
+//        }
+//
+//    }
+//
+//    private static class RockLobsterFishingModifier extends LootModifier{
+//
+//        private final float dropChance;
+//        private final Item dropItem;
+//        private final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "field_186504_g");
+//
+//        public RockLobsterFishingModifier(ILootCondition[] conditions, float dropChanceIn, Item dropItemIn) {
+//            super(conditions);
+//            dropChance = dropChanceIn;
+//            dropItem = dropItemIn;
+//
+//        }
+//
+//        @Nonnull
+//        @Override
+//        public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context){
+//
+//            try{
+//
+//                Set<LootTable> set = (Set<LootTable>) LOOT_FIELD.get(context);
+//
+//                Random rand = new Random();
+//                if(set.isEmpty() && rand.nextFloat() < dropChance){
+//                    generatedLoot.add(new ItemStack(dropItem, 1));
+//                }
+//                return generatedLoot;
+//
+//            }
+//            catch (IllegalArgumentException | IllegalAccessException e){
+//                throw new RuntimeException("Could not access lootTables", e);
+//            }
+//        }
+//
+//        private static class Serializer extends GlobalLootModifierSerializer<RockLobsterFishingModifier> {
+//
+//            @Override
+//            public RockLobsterFishingModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditons) {
+//                float dataChance = JSONUtils.getFloat(object, "chance");
+//                Item dataItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(JSONUtils.getString(object, "item")));
+//                return new RockLobsterFishingModifier(conditons, dataChance, dataItem);
+//            }
+//            @Override
+//            public JsonObject write(RockLobsterFishingModifier instance){
+//                JsonObject json = makeConditions(instance.conditions);
+//                json.addProperty("chance", instance.dropChance);
+//                json.addProperty("item", ItemInit.ROCK_LOBSTER.get().toString());
+//                return json;
+//            }
+//        }
+//
+//    }
 
 }
