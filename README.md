@@ -1,16 +1,13 @@
 # the-rock-mod
 A Minecraft mod the adds throwable rocks
 
-Left Click on Obsidian with Cobblestone in your main hand to obtain Rocks
+Hold LControl and Right-Click on obsidian or bedrock with different stones to get rocks.
 
 You can right click to throw rocks like snowballs, and they will deal damage to mobs and players.
 
-Current in Version 1.16.4-0.0.2.0:
+Current in Version 1.16.4-1.0.0.0:
 
-- Rock Item Registered and early texture included
-- Rock throwing
-- Rock crafting sorta completed
+- Over a dozen unique rocks
+- Several special rocks with unique properties
 
-Still coming:
-
-- More Sounds and Particles
+Built in Forge version 35.1.4, probably works in other Forge Versions
