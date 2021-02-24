@@ -12,7 +12,7 @@ displayName="The Rock Mod" #mandatory
 updateJSONURL="http://fillmein.me/" #optional
 displayURL="https://github.com/SecretJuice/the-rock-mod" #optional
 
-logoFile="/assets.sj_rock_mod/textures/items/rock.png" #optional
+#logoFile="rock.png" #optional
 
 credits="Thanks to mathidiot for the textures." #optional
 authors="SecretJuice" #optional
